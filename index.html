@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>INTERIOR LEADS — Google Реклама для Ремонту Квартир</title>
+<title>INTERIOR LEADS — Google Ads для ремонтних компаній</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -191,6 +191,16 @@ padding: 80px 64px;
 width: 100%;
 }
 
+.hero-badges {
+display: flex;
+align-items: center;
+gap: 14px;
+flex-wrap: wrap;
+margin-bottom: 32px;
+opacity: 0;
+animation: fadeUp 0.8s 0.2s ease forwards;
+}
+
 .hero-tag {
 display: inline-flex;
 align-items: center;
@@ -200,11 +210,22 @@ font-weight: 600;
 letter-spacing: 0.2em;
 text-transform: uppercase;
 color: #C19F63;
-margin-bottom: 32px;
-opacity: 0;
-animation: fadeUp 0.8s 0.2s ease forwards;
 border-left: 3px solid #C19F63;
 padding-left: 10px;
+}
+
+.partner-badge-placeholder {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+font-size: 11px;
+font-weight: 600;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(--muted);
+border: 1px dashed var(--border2);
+border-radius: 3px;
+padding: 6px 12px;
 }
 
 /* Blur-in H1 */
@@ -291,6 +312,39 @@ display: inline-block;
 transition: all 0.3s;
 }
 .btn-ghost:hover { border-color: var(--neon-hover); color: var(--neon-hover); }
+
+.btn-outline-neon {
+background: transparent;
+color: var(--neon);
+padding: 16px 44px;
+font-family: 'Space Grotesk', sans-serif;
+font-size: 14px;
+font-weight: 700;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+border: 1.5px solid var(--neon);
+cursor: pointer;
+border-radius: 3px;
+text-decoration: none;
+display: inline-block;
+transition: all 0.3s;
+}
+.btn-outline-neon:hover {
+background: var(--neon-dim);
+border-color: var(--neon-hover);
+color: var(--neon-hover);
+box-shadow: 0 0 20px var(--neon-glow);
+transform: translateY(-2px);
+}
+
+.hero-trust {
+display: flex;
+gap: 28px;
+flex-wrap: wrap;
+margin-top: 28px;
+opacity: 0;
+animation: fadeUp 0.8s 1.15s ease forwards;
+}
 
 /* Hero stats */
 .hero-stats {
@@ -499,6 +553,25 @@ margin-bottom: 4px;
 }
 .fact-label { font-size: 12px; color: var(--muted); font-weight: 500; }
 
+.dashboard-preview { margin-top: 28px; }
+.dashboard-preview-frame {
+aspect-ratio: 16/7;
+background: var(--bg3);
+border: 1px solid var(--border);
+border-radius: 4px;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+overflow: hidden;
+}
+.dashboard-preview-frame::before {
+content: '';
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, rgba(193,159,99,0.04) 0%, transparent 60%);
+}
+
 /* ─── SERVICES ─── */
 .services { background: var(--bg); border-top: 1px solid var(--border2); }
 
@@ -609,6 +682,61 @@ flex-shrink: 0;
 margin-top: 1px;
 }
 
+/* ─── PROCESS ─── */
+.process { background: var(--bg2); border-top: 1px solid var(--border2); }
+
+.process-grid {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+gap: 2px;
+margin-top: 64px;
+}
+
+.process-card {
+background: var(--bg3);
+border: 1px solid var(--border2);
+padding: 36px 24px;
+position: relative;
+overflow: hidden;
+transition: all 0.35s;
+}
+.process-card::before {
+content: '';
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 2px;
+background: var(--neon);
+box-shadow: 0 0 12px var(--neon-glow);
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.4s ease;
+}
+.process-card:hover::before { transform: scaleX(1); }
+.process-card:hover { background: var(--bg2); border-color: var(--neon-hover); }
+
+.process-num {
+font-family: 'Syne', sans-serif;
+font-size: 40px;
+font-weight: 800;
+color: var(--neon);
+line-height: 1;
+margin-bottom: 16px;
+text-shadow: 0 0 16px rgba(193,159,99,0.3);
+}
+.process-title {
+font-family: 'Syne', sans-serif;
+font-size: 16px;
+font-weight: 700;
+color: var(--text);
+margin-bottom: 10px;
+letter-spacing: -0.01em;
+}
+.process-desc {
+font-size: 13px;
+line-height: 1.6;
+color: var(--muted);
+}
+
 /* ─── CASES ─── */
 .cases { background: var(--bg2); border-top: 1px solid var(--border2); }
 
@@ -707,6 +835,69 @@ transition: width 1.5s ease;
 }
 .progress-fill.animated { width: var(--w); }
 
+/* Cases slider */
+.cases-slider { margin-top: 56px; position: relative; }
+.slider-label {
+font-size: 11px;
+font-weight: 600;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(--muted);
+margin-bottom: 20px;
+text-align: center;
+}
+.slider-viewport { overflow: hidden; border-radius: 4px; }
+.slider-track { display: flex; transition: transform 0.45s ease; }
+.slide { min-width: 100%; box-sizing: border-box; padding: 0 4px; }
+.slide-inner {
+aspect-ratio: 16/9;
+background: var(--bg3);
+border: 1px solid var(--border);
+border-radius: 4px;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+overflow: hidden;
+}
+.slide-inner::before {
+content: '';
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, rgba(193,159,99,0.04) 0%, transparent 60%);
+}
+.slider-btn {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+width: 40px; height: 40px;
+border-radius: 50%;
+background: var(--bg2);
+border: 1px solid var(--border2);
+color: var(--text);
+font-size: 18px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: all 0.25s;
+z-index: 2;
+}
+.slider-btn:hover { border-color: var(--neon-hover); color: var(--neon-hover); }
+.slider-prev { left: -20px; }
+.slider-next { right: -20px; }
+.slider-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+.slider-dot {
+width: 8px; height: 8px;
+border-radius: 50%;
+background: var(--border2);
+cursor: pointer;
+transition: background 0.25s, transform 0.25s;
+border: none;
+padding: 0;
+}
+.slider-dot.active { background: var(--neon); transform: scale(1.3); }
+
 /* ─── FAQ ─── */
 .faq { background: var(--bg); border-top: 1px solid var(--border2); }
 
@@ -783,6 +974,32 @@ color: var(--muted);
 }
 .faq-a strong { color: var(--text); font-weight: 500; }
 
+/* ─── TELEGRAM ─── */
+.telegram-section { background: var(--bg); border-top: 1px solid var(--border2); }
+.telegram-inner {
+max-width: 1000px;
+margin: 0 auto;
+padding: 72px 64px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 40px;
+}
+.telegram-title {
+font-family: 'Syne', sans-serif;
+font-size: clamp(26px, 3vw, 38px);
+font-weight: 800;
+line-height: 1.1;
+letter-spacing: -0.01em;
+margin-bottom: 10px;
+}
+.telegram-sub {
+font-size: 15px;
+color: var(--muted);
+line-height: 1.6;
+max-width: 420px;
+}
+
 /* ─── CTA FORM ─── */
 .cta-section {
 background: var(--bg2);
@@ -828,30 +1045,41 @@ max-width: 440px;
 .form-group {
 display: flex;
 flex-direction: column;
-gap: 12px;
-margin-bottom: 16px;
+gap: 16px;
+margin-bottom: 20px;
 }
 
 .form-input {
 background: var(--bg3);
 border: 1px solid var(--border2);
-border-radius: 3px;
-padding: 16px 20px;
+border-radius: 4px;
+padding: 17px 20px;
 font-family: 'Space Grotesk', sans-serif;
 font-size: 15px;
 color: var(--text);
 outline: none;
-transition: border-color 0.25s, box-shadow 0.25s;
+transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
 width: 100%;
 }
 .form-input::placeholder { color: var(--muted); }
+.form-input:hover { border-color: rgba(193,159,99,0.35); }
 .form-input:focus {
 border-color: var(--neon-hover);
-box-shadow: 0 0 0 3px rgba(193,159,99,0.08);
+background: var(--bg2);
+box-shadow: 0 0 0 3px rgba(193,159,99,0.1);
 }
 .form-input:invalid:not(:placeholder-shown) {
 border-color: #ff4d4d;
 box-shadow: 0 0 0 3px rgba(255,77,77,0.1);
+}
+
+@media (min-width: 640px) {
+.form-group {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 16px;
+}
+.form-group input[name="city"] { grid-column: 1 / -1; }
 }
 
 .form-note {
@@ -905,6 +1133,15 @@ font-weight: 700;
 font-size: 14px;
 }
 
+.final-cta { background: var(--bg); }
+.final-cta-buttons {
+display: flex;
+gap: 20px;
+justify-content: center;
+flex-wrap: wrap;
+margin-top: 8px;
+}
+
 /* ─── FOOTER ─── */
 footer {
 background: var(--bg);
@@ -921,6 +1158,14 @@ font-weight: 800;
 color: var(--text);
 }
 .footer-logo span { color: var(--neon); }
+.footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+.footer-links a {
+font-size: 13px;
+color: var(--muted);
+text-decoration: none;
+transition: color 0.25s;
+}
+.footer-links a:hover { color: var(--neon-hover); }
 .footer-copy { font-size: 13px; color: var(--muted); }
 
 /* ─── RESPONSIVE ─── */
@@ -929,6 +1174,7 @@ nav { padding: 0 32px; }
 .section-inner { padding: 80px 40px; }
 .hero-inner { padding: 60px 40px; }
 .services-grid { grid-template-columns: 1fr 1fr; }
+.process-grid { grid-template-columns: repeat(3, 1fr); }
 .about-grid { gap: 48px; }
 }
 
@@ -959,16 +1205,33 @@ gap: 20px;
 .about-facts { grid-template-columns: 1fr 1fr; }
 
 .services-grid { grid-template-columns: 1fr; }
+.process-grid { grid-template-columns: 1fr 1fr; }
 .cases-grid { grid-template-columns: 1fr; }
 .case-metrics { grid-template-columns: repeat(3, 1fr); }
 
-footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+.slider-prev { left: 8px; }
+.slider-next { right: 8px; }
+
+.telegram-inner { flex-direction: column; text-align: center; gap: 24px; }
+
+footer { flex-direction: column; gap: 24px; text-align: center; padding: 32px 24px; }
+.footer-links { justify-content: center; }
 }
 
 @media (max-width: 420px) {
 .hero h1 { font-size: 40px; }
 .section-title { font-size: 32px; }
 .case-metrics { grid-template-columns: 1fr 1fr; }
+.process-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+*, *::before, *::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+scroll-behavior: auto !important;
+}
 }
 </style>
 </head>
@@ -980,6 +1243,7 @@ footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24
 <ul id="nav-menu">
 <li><a href="#about">Про мене</a></li>
 <li><a href="#services">Послуги</a></li>
+<li><a href="#process">Процес</a></li>
 <li><a href="#cases">Кейси</a></li>
 <li><a href="#faq">FAQ</a></li>
 <li><a href="#contact" class="nav-btn">Отримати аудит</a></li>
@@ -995,37 +1259,44 @@ footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <div class="hero-inner">
-<div class="hero-tag">Google Ads · Ремонт квартир · Україна</div>
+<div class="hero-badges">
+<div class="hero-tag">Google Ads Спеціаліст</div>
+<div class="partner-badge-placeholder" title="Google Partner — скоро">Google Partner (скоро)</div>
+</div>
 <h1>
-<span class="line line-1">Більше заявок</span>
-<span class="line line-2">на ремонт</span>
-<span class="line line-3">з Google</span>
+<span class="line line-1">30+ заявок</span>
+<span class="line line-2">щомісяця</span>
+<span class="line line-3">для ремонтних компаній</span>
 </h1>
 <p class="hero-sub">
-Налаштовую рекламу виключно для компаній з ремонту квартир.
-<strong>Знаю нішу, знаю запити, знаю що конвертує.</strong>
-Перші заявки — вже на першому тижні.
+Будую Google Ads кампанії <strong>виключно для ремонтних компаній.</strong>
+Жодних шаблонів — лише перевірені стратегії, які генерують якісні заявки.
 </p>
 <div class="hero-cta">
 <a href="#contact" class="btn-neon">Безкоштовний аудит</a>
-<a href="#cases" class="btn-ghost">Дивитись кейси →</a>
+<a href="https://t.me/interiorleads" target="_blank" rel="noopener" class="btn-outline-neon">Написати в Telegram</a>
+</div>
+<div class="hero-trust">
+<div class="g-item">Сертифікований спеціаліст Google Ads</div>
+<div class="g-item">Один клієнт на місто</div>
+<div class="g-item">Прозора звітність</div>
 </div>
 <div class="hero-stats">
 <div class="h-stat">
-<div class="h-stat-num">5+</div>
-<div class="h-stat-label">Клієнтів в ніші</div>
+<div class="h-stat-num">$120K+</div>
+<div class="h-stat-label">Бюджету під керуванням</div>
 </div>
 <div class="h-stat">
-<div class="h-stat-num">~750₴</div>
-<div class="h-stat-label">Середня заявка</div>
+<div class="h-stat-num">1200+</div>
+<div class="h-stat-label">Заявок згенеровано</div>
+</div>
+<div class="h-stat">
+<div class="h-stat-num">12+</div>
+<div class="h-stat-label">Кампаній запущено</div>
 </div>
 <div class="h-stat">
 <div class="h-stat-num">4×</div>
 <div class="h-stat-label">Середній ROAS</div>
-</div>
-<div class="h-stat">
-<div class="h-stat-num">2 тиж</div>
-<div class="h-stat-label">До перших результатів</div>
 </div>
 </div>
 </div>
@@ -1076,6 +1347,14 @@ footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24
 <div class="fact-label">Середній ріст заявок</div>
 </div>
 </div>
+<div class="dashboard-preview reveal d5">
+<div class="dashboard-preview-frame">
+<div class="photo-placeholder">
+<div class="photo-icon">▤</div>
+<div class="photo-hint">Дашборд Google Ads — приклад звітності<br>(буде замінено на реальний скріншот)</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1091,14 +1370,17 @@ footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24
 <div class="services-grid">
 <div class="service-card reveal d2">
 <div class="service-num">01</div>
-<div class="service-name">Аудит</div>
+<div class="service-name">Google Ads Аудит</div>
 <div class="service-price">Безкоштовно</div>
-<p class="service-desc">Аналізую ринок у твоєму місті, дивлюся конкурентів і показую де ти втрачаєш заявки зараз.</p>
+<p class="service-desc">Розбираю твій рекламний кабінет по кістках і показую, де саме зливається бюджет.</p>
 <ul class="service-list">
-<li>Аналіз конкурентів у місті</li>
-<li>Оцінка потенціалу ніші</li>
-<li>Розрахунок бюджету і CPA</li>
-<li>Рекомендації без зобов'язань</li>
+<li>Аналіз структури кампаній</li>
+<li>Перевірка пошукових запитів (Search Terms)</li>
+<li>Аудит ключових слів і типів відповідності</li>
+<li>Перевірка мінус-слів</li>
+<li>Аудит трекінгу конверсій</li>
+<li>Аналіз CPA по кампаніях</li>
+<li>Конкретні рекомендації без зобов'язань</li>
 </ul>
 </div>
 
@@ -1107,14 +1389,14 @@ footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24
 <div class="service-num">02</div>
 <div class="service-name">Start</div>
 <div class="service-price">від $400 / міс</div>
-<p class="service-desc">Повне налаштування і ведення Google Search. Заявки з першого тижня, звіти щомісяця.</p>
+<p class="service-desc">Стабільний потік заявок з Google без зайвого шуму та ризикованих експериментів.</p>
 <ul class="service-list">
-<li>Налаштування Search + Remarketing</li>
-<li>Написання 10+ оголошень</li>
-<li>Робота з пошуковими запитами та мінус-словами</li>
-<li>A/B тести та оптимізація</li>
-<li>Щомісячний звіт з цифрами</li>
-<li>Підтримка в месенджері</li>
+<li>Перші заявки вже на першому тижні</li>
+<li>Мінімум зливу бюджету на нецільові кліки</li>
+<li>Прозора вартість кожної заявки</li>
+<li>Реклама працює, поки ти зайнятий об'єктами</li>
+<li>Щомісячний звіт зрозумілою мовою</li>
+<li>Пряма підтримка в месенджері</li>
 </ul>
 </div>
 
@@ -1122,16 +1404,60 @@ footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24
 <div class="service-num">03</div>
 <div class="service-name">Growth</div>
 <div class="service-price">від $600 / міс</div>
-<p class="service-desc">Повна екосистема Google Ads для домінування в місті. Search + Display + Performance Max.</p>
+<p class="service-desc">Максимальне охоплення попиту у місті — для тих, хто хоче зайняти нішу повністю.</p>
 <ul class="service-list">
-<li>Search + Display + Pmax</li>
-<li>Щоденний моніторинг бюджету</li>
-<li>Більше часу на оптимізацію</li>
-<li>Аналіз якості дзвінків і лідів</li>
-<li>Щомісячна стратегія масштабування</li>
-<li>Пріоритетний зв'язок 2 год</li>
+<li>Заявки з усіх каналів Google одночасно</li>
+<li>Бюджет під контролем щодня, без сюрпризів</li>
+<li>Вищі позиції у видачі, ніж у конкурентів</li>
+<li>Лише якісні ліди — сміттєві відсіюються</li>
+<li>Щомісячний план масштабування продажів</li>
+<li>Відповідь протягом 2 годин</li>
 </ul>
 </div>
+</div>
+</div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+<div class="section-inner">
+<div class="reveal">
+<div class="section-tag">Як ми працюємо</div>
+<h2 class="section-title">П'ять кроків до <em>потоку заявок</em></h2>
+<p class="section-sub">Прозорий процес від першого аудиту до масштабування.</p>
+</div>
+<div class="process-grid">
+
+<div class="process-card reveal d1">
+<div class="process-num">01</div>
+<div class="process-title">Безкоштовний аудит</div>
+<p class="process-desc">Аналізую твій рекламний кабінет або ринок у місті й показую реальний потенціал.</p>
+</div>
+
+<div class="process-card reveal d2">
+<div class="process-num">02</div>
+<div class="process-title">Стратегія</div>
+<p class="process-desc">Рахую бюджет, прогнозую кількість і вартість заявок, планую структуру кампаній.</p>
+</div>
+
+<div class="process-card reveal d3">
+<div class="process-num">03</div>
+<div class="process-title">Налаштування Google Ads</div>
+<p class="process-desc">Створюю кампанії, підключаю трекінг конверсій і запускаю рекламу.</p>
+</div>
+
+<div class="process-card reveal d4">
+<div class="process-num">04</div>
+<div class="process-title">Оптимізація</div>
+<p class="process-desc">Знижую CPA, підвищую конверсію та якість заявок на основі перших даних.</p>
+</div>
+
+<div class="process-card reveal d5">
+<div class="process-num">05</div>
+<div class="process-title">Масштабування</div>
+<p class="process-desc">Розширюю кампанії, що працюють, і збільшую обсяг заявок без втрати якості.</p>
+</div>
+
 </div>
 </div>
 </section>
@@ -1195,6 +1521,45 @@ footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24
 </div>
 
 </div>
+
+<div class="cases-slider reveal d3">
+<div class="slider-label">Скріни з рекламних кабінетів</div>
+<div class="slider-viewport">
+<div class="slider-track" id="sliderTrack">
+
+<div class="slide">
+<div class="slide-inner">
+<div class="photo-placeholder">
+<div class="photo-icon">▦</div>
+<div class="photo-hint">Скріншот кампанії — приклад 1<br>(буде замінено на реальний)</div>
+</div>
+</div>
+</div>
+
+<div class="slide">
+<div class="slide-inner">
+<div class="photo-placeholder">
+<div class="photo-icon">▦</div>
+<div class="photo-hint">Скріншот кампанії — приклад 2<br>(буде замінено на реальний)</div>
+</div>
+</div>
+</div>
+
+<div class="slide">
+<div class="slide-inner">
+<div class="photo-placeholder">
+<div class="photo-icon">▦</div>
+<div class="photo-hint">Скріншот кампанії — приклад 3<br>(буде замінено на реальний)</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<button class="slider-btn slider-prev" id="sliderPrev" aria-label="Попередній слайд">‹</button>
+<button class="slider-btn slider-next" id="sliderNext" aria-label="Наступний слайд">›</button>
+<div class="slider-dots" id="sliderDots"></div>
+</div>
 </div>
 </section>
 
@@ -1255,7 +1620,43 @@ footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24
 <div class="faq-a"><p>Так, якісний сайт або лендинг — обов'язковий. <strong>Реклама приводить трафік, але конвертує сайт.</strong> Якщо сайту немає або він слабкий — можу порадити що виправити перед запуском, щоб не зливати бюджет.</p></div>
 </div>
 
+<div class="faq-item">
+<div class="faq-q">
+<span class="faq-q-text">Чому ти працюєш тільки з ремонтними компаніями?</span>
+<span class="faq-icon">+</span>
 </div>
+<div class="faq-a"><p><strong>Глибока спеціалізація дає кращий результат, ніж широкий профіль.</strong> Я знаю сезонність ніші, типові заперечення клієнтів, які ключові слова приводять платоспроможних лідів, а які — лише зливають бюджет. Це напрацьовується роками саме в одній ніші.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">
+<span class="faq-q-text">Чи можеш працювати з новим бізнесом без історії реклами?</span>
+<span class="faq-icon">+</span>
+</div>
+<div class="faq-a"><p>Так. <strong>Більшість моїх клієнтів приходять саме без готового рекламного акаунту.</strong> Я створюю кампанії з нуля: структуру, оголошення, трекінг конверсій. Відсутність історії — це навіть плюс, бо немає технічного боргу, який потрібно виправляти.</p></div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">
+<span class="faq-q-text">Що входить у безкоштовний Google Ads Аудит?</span>
+<span class="faq-icon">+</span>
+</div>
+<div class="faq-a"><p>Аналіз структури кампаній, пошукових запитів, ключових слів і типів відповідності, перевірку мінус-слів, аудит трекінгу конверсій та розрахунок CPA. <strong>На виході — список конкретних проблем і рекомендацій</strong>, навіть якщо ми не почнемо співпрацю.</p></div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- TELEGRAM -->
+<section class="telegram-section" id="telegram">
+<div class="telegram-inner reveal">
+<div class="telegram-text">
+<div class="section-tag">Швидкий контакт</div>
+<h3 class="telegram-title">Не хочеш заповнювати форму?</h3>
+<p class="telegram-sub">Напиши мені напряму в Telegram — відповім протягом кількох годин і одразу поставлю уточнюючі запитання по твоєму місту.</p>
+</div>
+<a href="https://t.me/interiorleads" target="_blank" rel="noopener" class="btn-neon">Написати в Telegram →</a>
 </div>
 </section>
 
@@ -1289,9 +1690,26 @@ footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24
 </div>
 </section>
 
+<!-- FINAL CTA -->
+<section class="cta-section final-cta" id="final-cta">
+<div class="cta-inner">
+<h2 class="section-title reveal">Готовий отримувати більше <em>кваліфікованих заявок</em>?</h2>
+<div class="final-cta-buttons reveal d1">
+<a href="#contact" class="btn-neon">Отримати безкоштовний аудит</a>
+<a href="https://t.me/interiorleads" target="_blank" rel="noopener" class="btn-outline-neon">Написати в Telegram</a>
+</div>
+</div>
+</section>
+
 <!-- FOOTER -->
 <footer>
 <div class="footer-logo">INTERIOR<span>LEADS</span></div>
+<div class="footer-links">
+<a href="https://t.me/interiorleads" target="_blank" rel="noopener">Telegram</a>
+<a href="mailto:hello@interiorleads.com">hello@interiorleads.com</a>
+<a href="#privacy">Політика конфіденційності</a>
+<a href="#agreement">Договір-оферта</a>
+</div>
 <div class="footer-copy">© 2026 INTERIOR LEADS · Google Ads для ремонту квартир</div>
 </footer>
 
@@ -1321,6 +1739,46 @@ e.target.querySelectorAll('.progress-fill').forEach(b => b.classList.add('animat
 }, { threshold: 0.3 });
 cardObs.observe(card);
 });
+
+// ─── CASES SLIDER ───
+(function() {
+const track = document.getElementById('sliderTrack');
+const prevBtn = document.getElementById('sliderPrev');
+const nextBtn = document.getElementById('sliderNext');
+const dotsWrap = document.getElementById('sliderDots');
+if (!track || !prevBtn || !nextBtn || !dotsWrap) return;
+
+const slides = track.children;
+let index = 0;
+
+for (let i = 0; i < slides.length; i++) {
+const dot = document.createElement('button');
+dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+dot.setAttribute('aria-label', 'Слайд ' + (i + 1));
+dot.addEventListener('click', () => goTo(i));
+dotsWrap.appendChild(dot);
+}
+
+function update() {
+track.style.transform = `translateX(-${index * 100}%)`;
+Array.from(dotsWrap.children).forEach((d, i) => d.classList.toggle('active', i === index));
+}
+
+function goTo(i) {
+index = (i + slides.length) % slides.length;
+update();
+}
+
+prevBtn.addEventListener('click', () => goTo(index - 1));
+nextBtn.addEventListener('click', () => goTo(index + 1));
+
+const sliderEl = track.closest('.cases-slider');
+let autoTimer = setInterval(() => goTo(index + 1), 6000);
+sliderEl.addEventListener('mouseenter', () => clearInterval(autoTimer));
+sliderEl.addEventListener('mouseleave', () => {
+autoTimer = setInterval(() => goTo(index + 1), 6000);
+});
+})();
 
 // ─── FAQ TOGGLE ───
 document.querySelectorAll('.faq-q').forEach(q => {
